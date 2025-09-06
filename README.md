@@ -4,9 +4,10 @@
 >
 > **By Students, For Students.**
 
-NKNU-Connect is a modern, cross-platform mobile app built with Flutter, designed to enhance the campus experience for NKNU students. 
-It offers a suite of practical tools to streamline academic and social life, empowering students to stay organized, connected, and informed, 
-making campus life more convenient and engaging.
+NKNU-Connect is a modern, cross-platform mobile app built with Flutter, designed to enhance the campus experience for
+NKNU students.
+It offers a suite of practical tools to streamline academic and social life, empowering students to stay organized,
+connected, and informed, making campus life more convenient and engaging.
 
 [![State-of-the-art Shitcode](https://img.shields.io/static/v1?label=State-of-the-art&message=Shitcode&color=7B5804)](https://github.com/trekhleb/state-of-the-art-shitcode)
 [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?logo=dart&logoColor=white)](#)
@@ -34,15 +35,36 @@ configured.
 
 ### Environment Setup
 
-1. Go:
-    - Verify installation: `go version`
-2. Android NDK:
-    - Set the `ANDROID_NDK_HOME` environment variable:
-      ```bash
-      export ANDROID_NDK_HOME=/path/to/android-ndk
-      ```
-3. GNU Make:
-    - Verify installation: `make --version`
+1. Install Flutter SDK (version 3.29.3):
+    - Follow the [official Flutter installation guide](https://docs.flutter.dev/get-started/install) to download and
+      install Flutter SDK 3.29.3.
+    - Add the `flutter` command to your system PATH as described in the guide.
+    - Run `flutter doctor -v` to verify the installation and check for additional dependencies.
+
+2. Set up Android Development:
+    - Android Studio:
+        - Download and install Android Studio 2024.1.2.12
+          from [Android Studio website](https://developer.android.com/studio).
+        - Configure the Android SDK and Android Emulator during the installation process.
+    - Android SDK:
+        - Open Android Studio, go to File > Settings > Appearance & Behavior > System Settings > Android SDK, and
+          install Android SDK Platform 35.0.0.
+        - Ensure the Android Emulator and necessary build tools are installed.
+    - Java JDK:
+        - Android Studio includes a built-in JDK (expected version 17.0.11). Verify the JDK version by running
+          `flutter doctor -v`.
+
+3. Set up iOS Development:
+    - TBD.
+
+4. Install GNU Make:
+    - Install GNU Make for build automation scripts. Download and install GNU Make 4.4.1
+      from [GNU Make website](https://www.gnu.org/software/make/).
+    - Verify the installation by running `make --version`.
+
+5. Verify Your Setup:
+    - Run `flutter doctor -v` in your terminal to ensure all dependencies are correctly configured.
+    - Address any issues reported by `flutter doctor`.
 
 ## Project Structure
 
