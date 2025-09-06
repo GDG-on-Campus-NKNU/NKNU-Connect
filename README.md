@@ -4,13 +4,9 @@
 >
 > **By Students, For Students.**
 
-# NKNU-Connect
-
-NKNU-Connect is a modern, cross-platform mobile app built with Flutter, designed to enhance the campus experience for
-NKNU students. It offers a suite of practical tools to streamline academic and social
-life, including course management, campus news, event updates, and more! With its intuitive
-interface and robust performance, NKNU-Connect empowers students to stay organized, connected, and informed, making
-campus life more convenient and engaging.
+NKNU-Connect is a modern, cross-platform mobile app built with Flutter, designed to enhance the campus experience for NKNU students. 
+It offers a suite of practical tools to streamline academic and social life, empowering students to stay organized, connected, and informed, 
+making campus life more convenient and engaging.
 
 [![State-of-the-art Shitcode](https://img.shields.io/static/v1?label=State-of-the-art&message=Shitcode&color=7B5804)](https://github.com/trekhleb/state-of-the-art-shitcode)
 [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?logo=dart&logoColor=white)](#)
