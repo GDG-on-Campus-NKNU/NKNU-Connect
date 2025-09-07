@@ -70,56 +70,60 @@ configured.
 
 ```
 NKNU-Connect/
-├── sso/                # NKNU Single Sign-On (SSO) related functionality
-├── utils/              # Utility functions and helper tools
-├── Makefile            # Build automation script for compiling the library
+├── lib/                    # Main Dart source code
+│   ├── main.dart           # Application entry point
+│   ├── screens/            # UI screens (e.g., course scheduling, campus news)
+│   ├── widgets/            # Reusable UI components
+│   ├── services/           # Business logic and API integrations
+│   ├── ffi/                # Dart bindings and interfaces for core logic compiled from NKNU-Core.
+│   └── models/             # Data models
+├── android/                # Android-specific configuration
+│   └── app/
+│       └── build.gradle.kts  # Android build configuration
+├── ios/                    # iOS-specific configuration
+│   └── Runner.xcodeproj    # Xcode project for iOS builds
+├── test/                   # Unit and widget tests
+├── analysis_options.yaml   # Dart code analysis rules
+├── Makefile                # Build automation scripts
+├── pubspec.yaml            # Flutter configuration (dependencies, assets)
+├── .gitignore              # Files and directories to exclude from version control
 └── README.md           # Project documentation
 ```
 
 ## Building the Project
 
-The project uses a Makefile to automate the compilation process, generating a shared object (`.so`) file for integration
-with Android or other platforms.
+Follow these steps to run NKNU-Connect on a simulator/emulator or build a release:
 
-To compile the library:
-
-```bash
-make compile
-```
-
-This command builds the core functionality into a `.so` file, ready for use in dependent projects
-like [NKNU-Connect](https://github.com/GDG-on-Campus-NKNU/NKNU-Connect).
-
-## Usage
-
-The compiled `.so` file can be integrated into Android projects or other platforms that support native libraries. Refer
-to the documentation of the consuming project (e.g., [NKNU-Connect](https://github.com/GDG-on-Campus-NKNU/NKNU-Connect))
-for specific integration instructions.
+1. Install Dependencies
+    - Run the following command to fetch Flutter dependencies:
+        ```shell
+        flutter pub get
+        ``` 
+    - Download compiled [NKNU-Core libraries](https://github.com/GDG-on-Campus-NKNU/NKNU-Core):
+        ```shell
+        make download-all-libs
+        ```
+2. Run the app:
+    - List available devices (emulators or connected devices):
+      ```shell
+      flutter devices
+      ```
+    - Run the app on a specific device, replacing `<device_id>` with the target device ID:
+        ```shell
+        flutter run -d <device_id>
+        ```
+3. Build Releases:
+    - Build a release using Makefile:
+        ```shell
+        make build
+        ```
+    - The output APK is located at `build/app/outputs/flutter-apk/app-release.apk`.
+    - For iOS: Build requirements are TBD.
 
 ## Development Guidelines
 
-To maintain modularity and reusability, each independent feature should be implemented in a separate Go package. For
-example, if developing a traffic information query feature, create a dedicated `traffic` package. All functions intended
-for export to other projects must be placed in a file named `api.go` within the respective package. Additionally, in the
-`main` package's `main.go`, use side effect imports (e.g., `import _ "path/to/package"`) to ensure that the package is
-included during compilation.
+TBD
 
 ## Testing
 
-To run tests, set the following environment variables for SSO authentication:
-
-- `account`: Your SSO account username
-- `password`: Your SSO account password
-
-Example:
-
-```bash
-export account=your_sso_username
-export password=your_sso_password
-```
-
-Then, execute the tests using:
-
-```bash
-make test
-```
+TBD
