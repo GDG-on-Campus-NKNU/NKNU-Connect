@@ -27,6 +27,7 @@ Before you begin, ensure the following tools are installed:
 - iOS Development:
     - TBD
 - GNU Make (version 4.4.1)
+- LLVM (version 21.1.1)
 
 > ⚠️ Higher version may work but have not been tested
 
