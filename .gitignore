@@ -46,3 +46,5 @@ app.*.map.json
 
 # libs
 /android/app/src/main/jniLibs
+/bin
+/lib/ffi/bindings
