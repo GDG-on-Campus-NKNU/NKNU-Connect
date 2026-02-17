@@ -1,3 +1,5 @@
+lib/nknu_core_ffi.dart
+
 # Miscellaneous
 *.class
 *.log

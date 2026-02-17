@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nknu_connect/models/sso/sso_mail_account.dart';
-import 'package:nknu_connect/models/sso/sso_session.dart';
-import 'package:nknu_connect/services/native_services.dart';
-import 'package:provider/provider.dart';
+import 'package:nknu_connect/nknu_core_ffi.dart';
 
 void main() {
-  runApp(
-    Provider<NativeServices>.value(
-      value: NativeServices.instance,
-      child: const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -45,15 +37,21 @@ class _SSOLoginTestState extends State<SSOLoginTest> {
   List<String> getGoogleAccount() {
     String acc = _accountController.text;
     String pwd = _pwdController.text;
-    SsoSession session = NativeServices.instance.sso.getSession();
+
+    var r = NknuCoreFfi.getSessionInfo();
+    var sessionId = r["data"]["aspNETSessionId"];
+    var viewState = r["data"]["viewState"];
+
+    var loginResult = NknuCoreFfi.login(sessionId, viewState, acc, pwd);
+    debugPrint(loginResult.toString());
+
+    var mailResult = NknuCoreFfi.getMailServiceAccount(sessionId);
+    debugPrint(mailResult.toString());
+
     try {
-      NativeServices.instance.sso.login(session, acc, pwd);
-      SsoMailServiceAccount mailServiceAccount = NativeServices.instance.sso
-          .getMailServiceAccount(session.sessionID);
-      _error = "";
       return [
-        mailServiceAccount.googleAccount,
-        mailServiceAccount.googlePassword,
+        mailResult["data"]["google"]["account"],
+        mailResult["data"]["google"]["password"],
       ];
     } catch (e) {
       _error = e.toString();
