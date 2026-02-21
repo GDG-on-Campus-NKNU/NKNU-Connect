@@ -38,6 +38,7 @@ dependencies:
   provider: ^6.1.5+1
   http: ^1.6.0
   path: ^1.9.1
+  device_preview_plus: ^2.6.1
 
 dev_dependencies:
   flutter_test:
