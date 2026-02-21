@@ -19,7 +19,7 @@ connected, and informed, making campus life more convenient and engaging.
 
 Before you begin, ensure the following tools are installed:
 
-- Flutter SDK (version 3.29.3)
+- Flutter SDK (version 3.41.2)
 - Android Development:
     - Android Studio (version 2024.1.2.12)
     - Android SDK (version 35.0.0)
