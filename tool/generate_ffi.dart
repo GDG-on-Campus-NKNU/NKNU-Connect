@@ -45,10 +45,10 @@ void main() async {
   outputFile.writeAsStringSync(dartContent);
   print('Generated ${outputFile.path}');
 
-  // for (var l in libMap) {
-  //   print("Downloading lib ${l[0]}");
-  //   downloadLib(l[0], l[1]);
-  // }
+  for (var l in libMap) {
+    print("Downloading lib ${l[0]}");
+    downloadLib(l[0], l[1]);
+  }
 }
 
 Future<String> getHeaderFileContent() async {
@@ -221,7 +221,8 @@ void _generateWrapperMethod(StringBuffer buffer, CFunction func) {
       })
       .join(', ');
 
-  final returnType = func.returnType == 'char*' ? 'Map<String, dynamic>' : 'void';
+  final returnType =
+      func.returnType == 'char*' ? 'Map<String, dynamic>' : 'void';
 
   buffer.writeln('  static $returnType $apiName($dartParams) {');
 
@@ -257,7 +258,9 @@ void _generateWrapperMethod(StringBuffer buffer, CFunction func) {
   if (func.returnType == 'char*') {
     buffer.writeln('    final result = resultPtr.cast<Utf8>().toDartString();');
     buffer.writeln('    _Free(resultPtr); // Prevent memory leak');
-    buffer.writeln('    return jsonDecode(utf8.decode(base64.decode(result)));');
+    buffer.writeln(
+      '    return jsonDecode(utf8.decode(base64.decode(result)));',
+    );
   }
 
   buffer.writeln('  }');
